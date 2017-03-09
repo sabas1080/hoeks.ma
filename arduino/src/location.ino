@@ -59,9 +59,9 @@ static osjob_t sendjob;
 // cycle limitations).
 const unsigned TX_INTERVAL = 30;
 
-// Pin mapping ESP8266   D8 -> Slave select
+// Pin mapping ESP8266   D1 -> Slave select
 const lmic_pinmap lmic_pins = {
-    .nss = D0,
+    .nss = 5,
     .rxtx = LMIC_UNUSED_PIN,
     .rst = LMIC_UNUSED_PIN,
     .dio = {LMIC_UNUSED_PIN, LMIC_UNUSED_PIN, LMIC_UNUSED_PIN},
