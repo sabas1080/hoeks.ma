@@ -5,9 +5,11 @@ var io = require('socket.io')(app);
 var fs = require('fs');
 var sock = null;
 app.listen(80);
-var appEUI = '';      // INSERT TTN YOUR AppEUI
+
+var region = 'eu';
+var appId = '';
 var accessKey = '';   // INSERT TTN accessKey
-var client = new ttn.Client('staging.thethingsnetwork.org', appEUI, accessKey);
+var client = new ttn.Client(region, appId, accessKey);
 
 function handler (req, res) {
   fs.readFile(__dirname + '/index.html',
@@ -30,7 +32,7 @@ io.on('connection', function (socket) {
 });
 
 client.on('connect', function() {
-  console.log('connected');
+  console.log('[DEBUG]','Connected to ttn network');
 });
 
 io.sockets.on('connection', function (socket) {
@@ -40,34 +42,38 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-client.on('uplink', function (msg) {
-  var raw = new Buffer(msg.fields.raw, 'base64');
+client.on('message', function (deviceId, msg) {
+  //console.info('[INFO] ', 'Message:', deviceId, JSON.stringify(msg, null, 2));
+  var formattedData = JSON.parse(JSON.stringify(msg, null, 2))
+  formattedData.payload_raw = formattedData.payload_raw.data;
+  //var raw = new Buffer(msg, 'base64');
+  console.info(formattedData.payload_raw);
   console.log();
-  console.log("lengte " + raw.length);
+  console.log("lengte " + formattedData.payload_raw.length);
   var mac = [];
   var rssi = [];
   var tmp = "";
-  for(i=0; i < raw.length; i++) {
+  for(i=0; i < formattedData.payload_raw.length; i++) {
       if((i + 1) % 7 == 0) {
          tmp = tmp.slice(0,-1);
-         rssi = parseInt(raw[i]);
+         rssi = parseInt(formattedData.payload_raw[i]);
          console.log("mac " + tmp + " rssi " + rssi);
          mac.push({ mac: tmp, ssid: '', signal_level: "-" + rssi });
          i++;
          tmp = "";
       }
-      var hex = parseInt(raw[i]).toString(16);
+      var hex = parseInt(formattedData.payload_raw[i]).toString(16);
       tmp  = tmp + hex + ":";
   }
   getLocation(mac);
 });
 
-client.on('activation', function (evt) {
-  console.log("activation");
+client.on('activation', function(deviceId, data) {
+    console.log('[INFO] ', 'Activation:', deviceId, data);
 });
 
 client.on('error', function (err) {
-  // TODO: Handle error
+  console.error('[ERROR]', err.message);
 });
 
 function setSocket(s) {
