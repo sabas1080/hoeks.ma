@@ -91,7 +91,7 @@ function getLocation(plop) {
       console.log(loc.latitude + ", " + loc.longitude);
       console.log("error: " + err);
       if(sock != null) {
-        sock.emit('location', loc.latitude + "," + loc.longitude);
+        io.sockets.emit('location', loc.latitude + "," + loc.longitude);
       }
     });
 }
