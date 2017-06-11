@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #666;
+    background: #f2f2f2;
+    font-size: 1em;
+    line-height: 1.5em;
+    padding-top: 80px;
+}
+
+h1 {
+    font-size: 2.3em;
+    line-height: 1.3em;
+    margin: 15px 0;
+    text-align: center;
+    font-weight: 300;
+}
+
+p {
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#main-header {
+    background: #ee7b06;
+    color: white;
+    height: 80px;
+}
+
+#main-header a {
+    color: white;
+}
+
+
+/*
+ * Logo
+ */
+
+#logo-header {
+    float: left;
+    padding: 15px 0 0 20px;
+    text-decoration: none;
+}
+
+#logo-header:hover {
+    color: #43d62b;
+}
+
+#logo-header .site-name {
+    display: block;
+    font-size: 20pt;
+    font-weight: 700;
+}
+
+#logo-header .site-desc {
+    display: block;
+    font-weight: 300;
+    font-size: 0.8em;
+    color: #f0f0f0;
+}
+
+
+/*
+ * Navegación
+ */
+
+nav {
+    float: right;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background: #b35a00;
+}
+
+#main-header {
+    background: #ee7b06;
+    color: white;
+    height: 80px;
+    width: 100%;
+    /* hacemos que la cabecera ocupe el ancho completo de la página */
+    left: 0;
+    /* Posicionamos la cabecera al lado izquierdo */
+    top: 0;
+    /* Posicionamos la cabecera pegada arriba */
+    position: fixed;
+    /* Hacemos que la cabecera tenga una posición fija */
+}
+
+#main-content {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+#main-content header, #main-content .content {
+    padding: 40px;
+}
+
+#main-footer {
+    background: #ee7b06;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+#main-footer p {
+    margin: 0;
+}
+
+#main-footer a {
+    color: white;
+}
+
+h2 {
+    text-align: center;
+}
+
+.cuenta-temp {
+    margin-top: 10px auto;
+    height: auto;
+    width: 100%;
+}
+
+.head-cuenta {
+    text-align: center;
+    border-radius: 30px;
+    border-style: solid;
+    border-width: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.actualibtn {
+    color: #ffffff;
+    font-size: 16pt;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 2px 2px rgba(80, 77, 87, 0.76);
+    background-color: rgb(255, 101, 3);
+}
+
+.elimiarbtn {
+    color: #ffffff;
+    margin-top: 5px;
+    font-size: 16pt;
+    border-radius: 30px;
+    border: none;
+    background-color: rgb(208, 26, 26);
+    box-shadow: 2px 2px rgba(80, 77, 87, 0.76);
+}
+
+.formllen-in {
+    border-radius: 30px;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.formllen-nom {
+    margin-left: 30%;
+    font-size: 12pt;
+    margin-top: 20px;
+}
+
+.formllen-nom input {
+    border-radius: 3px;
+    height: 30px;
+    font-size: 12pt;
+    border-style: solid;
+    border-color: rgb(108, 111, 116);
+}
+
+.formllen-desc {
+    margin-left: 30%;
+    font-size: 12pt;
+    margin-top: 20px;
+}
+
+.formllen-desc textarea {
+    width: 300px;
+    border-radius: 3px;
+    border: 3px;
+    border-style:  solid;
+    border-color: rgb(108, 111, 116);
+    resize: none;
+}
+
+.formllen-pre {
+    margin-left: 32%;
+    font-size: 12pt;
+    margin-top: 20px;
+}
+
+.formllen-pre input {
+  height: 30px;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: rgb(108, 111, 116);
+    cursor: pointer;
+}
+
+
+
+.formllen-img {
+    margin-left: 31%;
+    font-size: 12pt;
+    margin-top: 20px;
+}

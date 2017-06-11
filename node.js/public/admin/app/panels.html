@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<title>Paneles</title>
+	<link rel="stylesheet" href="../css/main.css">
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../js/main.js">
+	</script>
+</head>
+
+<body>
+
+	<header id="main-header">
+
+		<a id="logo-header" href="#">
+			<span class="site-name">eMenu</span>
+			<span class="site-desc">Menu para Restaurante.</span>
+		</a>
+		<!-- / #logo-header -->
+
+		<nav>
+			<ul>
+				<li><a href="../">Inicio</a></li>
+				<li><a href="#">Paneles</a></li>
+				<li><a href="cuentas.html">Registros</a></li>
+			</ul>
+		</nav>
+		<!-- / nav -->
+
+	</header>
+	<!-- / #main-header -->
+
+
+	<section id="main-content">
+		<div class="cuenta-temp">
+			<h1>Platillos</h1>
+			<div class="tabla_cuenta">
+				<table id='cuenta'>
+				</table>
+			</div>
+		</div>
+		<h1>Crear Platillo</h1>
+		<div class="">
+			<form class="formllen-in" onsubmit="">
+				<div class="formllen-nom">
+					Nombre: <input type="text" placeholder="Pizza,Tacos...etc" name="" value="">
+				</div>
+				<p>Descripcion:</p>
+				<div class="formllen-desc">
+					<textarea name="name" placeholder="La mas rica de la tienda contiene piña..." rows="8" cols="80"></textarea>
+				</div>
+				<div class="formllen-pre">
+					Precio:<input type="text" placeholder="50.00$" name="" value="">
+				</div>
+				<div class="formllen-img">
+					Imagen:<input type="file" onclick=`return cargarimg(this);` name="fileupload" value="fileupload" id="fileupload">
+				</div>
+			</form>
+			<div id="imageload">
+
+			</div>
+		</div>
+	</section>
+
+
+	<!-- / #main-content -->
+
+
+
+
+
+
+</body>
+
+</html>

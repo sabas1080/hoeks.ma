@@ -1,0 +1,33 @@
+body {
+    width: auto;
+    height: auto;
+    background-color: rgb(240, 240, 240);
+}
+
+#loggin {
+    width: 30%;
+    height: 400px;
+    background-color: rgb(214, 121, 25);
+    margin-top: 10%;
+    margin-left: 35%;
+    border-radius: 15px;
+    box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.76);
+}
+
+#loggin form {
+    position: inherit;
+    text-align: center;
+}
+
+#loggin form input {
+  padding-top: 5px;
+  margin-top: 5px;
+
+}
+
+#loggin h1 {
+  padding-top: 90px;
+ text-align: center;
+ position: inherit;
+ color: rgb(255, 252, 252);
+}

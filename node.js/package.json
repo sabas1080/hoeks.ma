@@ -1,16 +1,21 @@
 {
-  "name": "node.js",
-  "version": "0.0.2",
-  "description": "Location LoRa with WiFi",
-  "main": "location.js",
+  "name": "socket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
+    "start": "nodemon server/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "zoutepopcorn",
-  "license": "GPL",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "socket.io": "^1.7.3",
-    "ttn": "^2.0.1",
-    "wifi-location": "0.0.1"
+    "express": "^4.14.0",
+    "mysql": "^2.12.0",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
