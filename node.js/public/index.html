@@ -44,15 +44,14 @@
 			prettyPrint();
 			map = new GMaps({
 				div: '#map',
-				lat: -12.043333,
-				lng: -77.028333
+				lat: 21.898812,
+				lng: -102.316930
 			});
 			var path = [];
 			var p = [
-				[-12.040397656836609, -77.03373871559225],
-				[-12.040248585302038, -77.03993927003302],
-				[-12.050047116528843, -77.02448169303511],
-				[-12.044804866577001, -77.02154422636042]
+				[21.898812, -102.316930],
+				[21.902326, -102.316243],
+				[21.900106, -102.314548]
 			];
 			for (var i in p) {
 				latlng = new google.maps.LatLng(p[i][0], p[i][1]);
@@ -68,18 +67,21 @@
 			});
 
 		});
-		
+
 		var socket = io('http://localhost');
 
 		socket.on('location', function(data) {
 			console.log(data);
 			map.addMarker({
-				lat: -12.043333,
-				lng: -77.028333,
-				draggable: true,
+				lat: 21.901052,
+				lng: -102.315900,
+				title: "Firulais",
+				infoWindow: {
+					content: '<p>Firulais</p>'
+				},
+				draggable: false,
 				fences: [polygon],
 				outside: function(m, f) {
-					demo.initChartist();
 					$.notify({
 						icon: 'ti-bell',
 						message: "<b>Tracking Pet:</b> - Tu mascota ha salido del area."
@@ -89,6 +91,7 @@
 					});
 				}
 			});
+
 		});
 	</script>
 	<div class="wrapper">
@@ -230,17 +233,14 @@
 
 						<div class="col-md-12">
 							<div class="card">
-								<div class="header">
-									<h4 class="title"></h4>
-									<p class="category"></p>
-								</div>
 								<div class="content">
 									<div id="map"></div>
 									<div class="footer">
-										<hr>
-										<div class="stats">
-											<i class="ti-reload"></i>
+										<div class="chart-legend">
+											<i class="fa fa-circle text-info"></i> Limite
+											<i class="fa fa-circle text-danger"></i> Tu Mascota
 										</div>
+										<hr>
 									</div>
 								</div>
 							</div>
@@ -292,7 +292,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		demo.initChartist();
+
 
 		$.notify({
 			icon: 'ti-comment',
