@@ -63,7 +63,9 @@ function getLocation(plop) {
     console.log("https://www.google.com/maps/place/" + loc.latitude + "," + loc.longitude);
     console.log(loc.latitude + ", " + loc.longitude);
     console.log("error: " + err);
-    io.sockets.emit('location', loc.latitude + "," + loc.longitude);
+    var d = new Date();
+    console.log(' Hora '+d.getHours()+":"+d.getMinutes()+"");
+    io.sockets.emit('location', {latitu:loc.latitude,longi:loc.longitude});
 
   });
 }

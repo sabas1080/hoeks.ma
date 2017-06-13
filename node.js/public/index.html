@@ -71,13 +71,19 @@
 		var socket = io('http://localhost');
 
 		socket.on('location', function(data) {
-			console.log(data);
+			var d = new Date();
+			console.log(data,"\n",d);
+
+			console.log(data.latitu,data.longi);
+			map.removeMarkers();
 			map.addMarker({
-				lat: 21.901052,
-				lng: -102.315900,
+				lat: data.latitu,
+				lng: data.longi,
+				label:"Firulais",
+				icon:"icoloc.png",
 				title: "Firulais",
 				infoWindow: {
-					content: '<p>Firulais</p>'
+					content: '<p>Firulais</p><br> Hora '+d.getHours()+":"+d.getMinutes()+""
 				},
 				draggable: false,
 				fences: [polygon],
