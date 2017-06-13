@@ -44,6 +44,7 @@
 			prettyPrint();
 			map = new GMaps({
 				div: '#map',
+				title: "",
 				lat: 21.898812,
 				lng: -102.316930
 			});
@@ -66,26 +67,37 @@
 				fillOpacity: 0.6
 			});
 
+			/*GMaps.geolocate({
+					success: function(position) {
+						map.setCenter(position.coords.latitude, position.coords.longitude);
+					},
+					error: function(error) {
+						alert('Geolocation failed: ' + error.message);
+					},
+					not_supported: function() {
+						alert("Your browser does not support geolocation");
+					},
+					always: function() {
+						alert("Done!");
+					}
+				});*/
 		});
 
 		var socket = io('http://localhost');
 
 		socket.on('location', function(data) {
 			var d = new Date();
-			console.log(data,"\n",d);
-
-			console.log(data.latitu,data.longi);
+			console.log(data, "\n", d);
+			console.log(data.latitu, data.longi);
 			map.removeMarkers();
+			console.log(polygon);
 			map.addMarker({
 				lat: data.latitu,
 				lng: data.longi,
-				label:"Firulais",
-				icon:"icoloc.png",
-				title: "Firulais",
+				icon: "icoloc.png",
 				infoWindow: {
-					content: '<p>Firulais</p><br> Hora '+d.getHours()+":"+d.getMinutes()+""
+					content: '<p>Firulais</p><br> Hora ' + d.getHours() + ":" + d.getMinutes() + ""
 				},
-				draggable: false,
 				fences: [polygon],
 				outside: function(m, f) {
 					$.notify({
@@ -96,6 +108,7 @@
 						timer: 4000
 					});
 				}
+
 			});
 
 		});
