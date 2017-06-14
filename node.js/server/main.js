@@ -103,6 +103,6 @@ io.sockets.on('connection', function(socket) {
 //---------------------(SERVER)-----------------------
 
 
-server.listen(80, function() {
+server.listen(8080, function() {
   console.log("Servidor corriendo en http://localhost:8080");
 });

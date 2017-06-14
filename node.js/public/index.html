@@ -40,6 +40,7 @@
 <body>
 	<script type="text/javascript">
 		var map;
+		var polygon;
 		$(document).ready(function() {
 			prettyPrint();
 			map = new GMaps({
@@ -64,7 +65,8 @@
 				strokeOpacity: 1,
 				strokeWeight: 3,
 				fillColor: '#BBD8E9',
-				fillOpacity: 0.6
+				fillOpacity: 0.6,
+
 			});
 
 			/*GMaps.geolocate({
@@ -83,35 +85,43 @@
 				});*/
 		});
 
-		var socket = io('http://localhost');
+		var socket = io('http://192.168.1.9:8080');
 
 		socket.on('location', function(data) {
 			var d = new Date();
 			console.log(data, "\n", d);
-			console.log(data.latitu, data.longi);
 			map.removeMarkers();
 			console.log(polygon);
 			map.addMarker({
 				lat: data.latitu,
 				lng: data.longi,
 				icon: "icoloc.png",
+				dragable: true,
 				infoWindow: {
 					content: '<p>Firulais</p><br> Hora ' + d.getHours() + ":" + d.getMinutes() + ""
-				},
-				fences: [polygon],
-				outside: function(m, f) {
-					$.notify({
-						icon: 'ti-bell',
-						message: "<b>Tracking Pet:</b> - Tu mascota ha salido del area."
-					}, {
-						type: 'danger',
-						timer: 4000
-					});
 				}
-
 			});
+			var isInside = map.checkGeofence(data.latitu, data.longi, polygon);
+			if (isInside == false) {
+				$.notify({
+					icon: 'ti-bell',
+					message: "<b>Tracking Pet:</b> - Tu mascota ha salido del area."
+				}, {
+					type: 'danger',
+					timer: 4000
+				});
+			}
 
 		});
+		/*	outside: function(m, f) {
+							$.notify({
+								icon: 'ti-bell',
+								message: "<b>Tracking Pet:</b> - Tu mascota ha salido del area."
+							}, {
+								type: 'danger',
+								timer: 4000
+							});
+						}*/
 	</script>
 	<div class="wrapper">
 		<div class="sidebar" data-background-color="white" data-active-color="danger">
@@ -125,7 +135,7 @@
 				<ul class="nav">
 					<li class="active">
 						<a href="dashboard.html">
-                        <i class="ti-panel"></i>
+                        <i class="ti-map"></i>
                         <p>Mapa</p>
                     </a>
 					</li>
@@ -137,7 +147,7 @@
 					</li>
 					<li>
 						<a href="table.html">
-                        <i class="ti-view-list-alt"></i>
+                        <i class="ti-github"></i>
                         <p>Mascotas</p>
                     </a>
 					</li>
@@ -310,9 +320,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
-
-
 		$.notify({
 			icon: 'ti-comment',
 			message: "Bienvenido a <b>Tracking Pet</b> - Nosotros cuidamos de tu mascota."
