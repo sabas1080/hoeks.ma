@@ -85,20 +85,20 @@
 				});*/
 		});
 
-		var socket = io('http://192.168.1.9:8080');
+		var socket = io('http://localhost:8080');
 
 		socket.on('location', function(data) {
 			var d = new Date();
-			console.log(data, "\n", d);
+			console.log(data.longi,data.latitu);
+			console.log(d);
 			map.removeMarkers();
-			console.log(polygon);
 			map.addMarker({
 				lat: data.latitu,
 				lng: data.longi,
 				icon: "icoloc.png",
 				dragable: true,
 				infoWindow: {
-					content: '<p>Firulais</p><br> Hora ' + d.getHours() + ":" + d.getMinutes() + ""
+					content: '<p>Edi</p><br> Hora ' + d.getHours() + ":" + d.getMinutes() + ""
 				}
 			});
 			var isInside = map.checkGeofence(data.latitu, data.longi, polygon);
